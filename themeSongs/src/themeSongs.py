@@ -11,6 +11,11 @@ from poller import Poller
 
 fn = "C:\\Users\\CJ\\Music\\iTunes\\iTunes Media\\Music\\Vanilla Ice\\To the Extreme\\01 Ice Ice Baby.m4a"
 
+songs = {
+         "+17859798181" : "C:\\Users\\CJ\\Music\\iTunes\\iTunes Media\\Music\\Vanilla Ice\\To the Extreme\\01 Ice Ice Baby.m4a",
+         "+17853934228" : "C:\\Users\\CJ\\Music\\iTunes\\iTunes Media\\Music\\Waka Flocka Flame\\No Hands (feat. Roscoe Dash & Wale) - Si\\01 No Hands (feat. Roscoe Dash & Wal.m4a",
+        }
+
 if __name__ == '__main__':
    # While not killed
    # Poll texts
@@ -23,7 +28,11 @@ if __name__ == '__main__':
    try:
       while True:
          for i in p.poll():
-            s.interrupt(fn)
+            if songs.has_key(i):
+               song = songs[i]
+            else:
+               song = fn
+            s.interrupt(song)
          print "wait"
          time.sleep(30)
          continue
